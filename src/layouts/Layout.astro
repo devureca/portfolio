@@ -23,14 +23,23 @@ const { title, description = "Fullstack developer portfolio" } = Astro.props;
             rel="stylesheet"
         />
         <title>{title}</title>
+
+        <script is:inline>
+            const saved = localStorage.getItem("theme");
+            const prefersDark = window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches;
+            if (saved === "dark" || (!saved && prefersDark)) {
+                document.documentElement.classList.add("dark");
+            }
+        </script>
+        
     </head>
     <body>
         <slot name="navbar" />
         <slot name="panel" />
 
-        <div
-            class="mx-auto max-w-2xl lg:h-screen lg:overflow-y-auto lg:px-40"
-        >
+        <div class="mx-auto max-w-2xl lg:h-screen lg:overflow-y-auto lg:px-40">
             <slot />
         </div>
     </body>

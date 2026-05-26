@@ -1,0 +1,46 @@
+---
+---
+
+<button
+    aria-label="Cambiar tema"
+    class="theme-toggle text-xs text-zinc-600 hover:text-zinc-100 dark:hover:text-zinc-100 transition-colors duration-200 cursor-pointer"
+>
+    <span class="theme-icon">◑</span>
+</button>
+
+<script>
+    const html = document.documentElement;
+    const toggles = document.querySelectorAll(".theme-toggle");
+    const icons = document.querySelectorAll(".theme-icon");
+
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches;
+    const isDark = saved ? saved === "dark" : prefersDark;
+
+    if (isDark) {
+        html.classList.add("dark");
+    } else {
+        html.classList.remove("dark");
+    }
+
+    function updateIcons() {
+        icons.forEach((icon) => {
+            if (icon) {
+                icon.textContent = html.classList.contains("dark") ? "◑" : "◐";
+            }
+        });
+    }
+
+    updateIcons();
+
+    toggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+            html.classList.toggle("dark");
+            const theme = html.classList.contains("dark") ? "dark" : "light";
+            localStorage.setItem("theme", theme);
+            updateIcons();
+        });
+    });
+</script>
