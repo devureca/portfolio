@@ -1,11 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    --font-sans: "Source Sans 3", sans-serif;
+}
+
 @layer base {
-    html {
-        scroll-behavior: smooth;
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
     }
 
     body {
-        @apply bg-zinc-950 text-zinc-100 antialiased;
+        background-color: #0a0a0a;
+        color: #e4e4e7;
+        font-family: var(--font-mono);
+        -webkit-font-smoothing: antialiased;
     }
 }

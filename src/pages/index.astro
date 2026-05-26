@@ -1,9 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Tu Nombre — Fullstack Developer">
-	<main>
-		<!-- Aquí irán las secciones -->
+<Layout title="devureca — Fullstack Developer">
+	<Navbar />
+	<Footer />
+
+	<main class="flex flex-col min-h-screen pt-15 lg:pt-8 px-5 lg:px-0">
+		<div class="flex-1">
+			<!-- contenido -->
+		</div>
+
+		<div
+			class="lg:hidden w-full text-center mt-auto pt-6 pb-6"
+		>
+			<p class="text-xs text-zinc-700">© 2025 devureca</p>
+		</div>
 	</main>
 </Layout>
