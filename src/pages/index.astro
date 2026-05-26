@@ -3,6 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import ProjectEntry from "../components/ProjectEntry.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const allProjects: CollectionEntry<"projects">[] = await getCollection(
+	"projects"
+);
+
+const sortedProjects = allProjects.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
 <Layout title="devureca — Fullstack Developer">
@@ -13,19 +23,16 @@ import ProjectEntry from "../components/ProjectEntry.astro";
 		class="w-full max-w-2xl mx-auto border-x border-zinc-300/60 dark:border-zinc-900 pt-20 lg:pt-8 px-5 lg:px-0"
 	>
 		<div class="lg:px-12 flex flex-col gap-16 pb-12">
-			<ProjectEntry
-				title="ADO MIZUMORI × studio CLIP"
-				tags={["pink", "blue", "fashion", "shopping"]}
-				url="https://www.dot-st.com/studioclip/cp/sc2025adomizumori/"
-				imageUrl="https://placehold.co/600x450"
-			/>
-
-			<ProjectEntry
-				title="boco to deco"
-				tags={["green", "white", "food"]}
-				url="https://www.teinei.co.jp/lp/bd/sp/005/aa/33200.html"
-				imageUrl="https://placehold.co/600x450"
-			/>
+			{
+				sortedProjects.map((project) => (
+					<ProjectEntry
+						title={project.data.title}
+						tags={project.data.tags}
+						url={project.data.url}
+						imageUrl={project.data.imageUrl}
+					/>
+				))
+			}
 		</div>
 
 		<div
