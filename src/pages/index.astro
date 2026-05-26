@@ -2,21 +2,38 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import ProjectEntry from "../components/ProjectEntry.astro";
 ---
 
 <Layout title="devureca — Fullstack Developer">
 	<Navbar />
 	<Footer />
 
-	<main class="flex flex-col min-h-screen pt-15 lg:pt-8 px-5 lg:px-0">
-		<div class="flex-1">
-			<!-- contenido -->
+	<main
+		class="w-full max-w-2xl mx-auto border-x border-zinc-300/60 dark:border-zinc-900 pt-20 lg:pt-8 px-5 lg:px-0"
+	>
+		<div class="lg:px-12 flex flex-col gap-16 pb-12">
+			<ProjectEntry
+				title="ADO MIZUMORI × studio CLIP"
+				tags={["pink", "blue", "fashion", "shopping"]}
+				url="https://www.dot-st.com/studioclip/cp/sc2025adomizumori/"
+				imageUrl="https://placehold.co/600x450"
+			/>
+
+			<ProjectEntry
+				title="boco to deco"
+				tags={["green", "white", "food"]}
+				url="https://www.teinei.co.jp/lp/bd/sp/005/aa/33200.html"
+				imageUrl="https://placehold.co/600x450"
+			/>
 		</div>
 
 		<div
-			class="lg:hidden w-full text-center mt-auto pt-6 pb-6"
+			class="lg:hidden w-full text-center py-8 border-t border-zinc-300/20 dark:border-zinc-900/50"
 		>
-			<p class="text-xs text-zinc-700">© 2025 devureca</p>
+			<p class="text-xs text-zinc-500 dark:text-zinc-600">
+				© 2026 devureca
+			</p>
 		</div>
 	</main>
 </Layout>
