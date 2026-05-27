@@ -1,0 +1,78 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+    const projects: CollectionEntry<"projects">[] = await getCollection(
+        "projects"
+    );
+
+    return projects.map((project: CollectionEntry<"projects">) => ({
+        params: { id: project.id },
+        props: { project },
+    }));
+}
+
+interface Props {
+    project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout title={`${project.data.title} — devureca`}>
+    <Navbar />
+    <Footer />
+
+    <main
+        class="w-full max-w-md lg:max-w-3xl border-x border-zinc-300/60 dark:border-zinc-900 pt-20 lg:pt-8 px-5 lg:px-12 mx-auto lg:mx-0 lg:ml-[calc((100vw-28rem)/2)] opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards]"
+    >
+        <div class="flex flex-col gap-8 pb-12">
+            <div class="text-xs text-zinc-400 dark:text-zinc-500">
+                {
+                    project.data.date.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    })
+                }
+            </div>
+
+            <h1
+                class="text-3xl lg:text-4xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight"
+            >
+                {project.data.title}
+            </h1>
+
+            <article
+                class="prose dark:prose-invert font-light tracking-wide leading-relaxed text-[14px] lg:text-[15px] max-w-none mt-8 flex flex-col gap-6 text-zinc-700 dark:text-zinc-300 antialiased"
+            >
+                <Content />
+            </article>
+        </div>
+    </main>
+
+    <a
+        href="/"
+        class="fixed bottom-8 right-8 lg:right-auto lg:left-[calc((100vw-28rem)/2+48rem-3rem)] z-50 flex h-12 w-12 items-center justify-center rounded-full bg-zinc-950 text-zinc-50 shadow-md hover:scale-110 active:scale-95 dark:bg-zinc-50 dark:text-zinc-950 transition-transform duration-300 group"
+        aria-label="Cerrar y volver al inicio"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="h-5 w-5 transition-transform duration-500 ease-out group-hover:rotate-180"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </a>
+</Layout>

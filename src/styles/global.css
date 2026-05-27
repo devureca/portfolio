@@ -5,7 +5,7 @@
 @theme {
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
-    --font-sans: "Source Sans 3", sans-serif;
+    --font-lexend: "Lexend", sans-serif;
 }
 
 @layer base {
@@ -29,7 +29,6 @@
         color: #e4e4e7;
     }
 
-    /* Ocultar barra de scroll respetando el comportamiento */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
@@ -37,5 +36,17 @@
     .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
