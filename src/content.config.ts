@@ -8,8 +8,18 @@ const projects = defineCollection({
         tags: z.array(z.string()),
         url: z.string().url(),
         imageUrl: z.string(),
-        date: z.coerce.date()
+        date: z.coerce.date(),
+        type: z.enum(["open-source", "client"])
     })
 });
 
-export const collections = { projects };
+const logs = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/content/logs" }),
+    schema: z.object({
+        title: z.string(),
+        date: z.coerce.date(),
+        description: z.string().optional()
+    })
+});
+
+export const collections = { projects, logs };

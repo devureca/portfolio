@@ -4,6 +4,7 @@ tags: ["pink", "blue", "fashion", "shopping"]
 url: "https://www.dot-st.com/studioclip/cp/sc2025adomizumori/"
 imageUrl: "https://placehold.co/600x380"
 date: "2026-06-25"
+type: "open-source"
 ---
 
 <img src="https://placehold.co/1200x600" alt="Imagen grande del proyecto" class="w-full h-auto object-cover rounded-sm" />

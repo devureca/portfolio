@@ -4,15 +4,15 @@ import ThemeToggle from "./ui/ThemeToggle.astro";
 const links = [
     { label: "Inicio", href: "/" },
     { label: "Acerca", href: "/about" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Logs", href: "#blog" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Logs", href: "/logs" },
     { label: "Contacto", href: "/contact" },
 ];
 
 const socials = [
-    { label: "gh", href: "https://github.com/" },
-    { label: "li", href: "https://linkedin.com/" },
-    { label: "x", href: "https://x.com/" },
+    { label: "gh", href: "https://github.com/devureca" },
+    { label: "fb", href: "https://www.facebook.com/devureca/" },
+    { label: "x", href: "https://x.com/devureca" },
 ];
 ---
 
@@ -20,14 +20,28 @@ const socials = [
     class="hidden lg:flex fixed top-0 left-16 h-screen w-40 flex-col justify-between px-6 py-8 z-10"
 >
     <div>
-        <p
-            class="text-xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-wide"
-        >
-            devureca
-        </p>
-        <p class="text-xs text-zinc-500 dark:text-zinc-600 mt-0.5 mb-6">
-            ~/.developer
-        </p>
+        <div class="flex flex-col">
+            <div class="flex items-center gap-2">
+                <span
+                    class="w-2.5 h-2.5 rounded-full bg-zinc-950 dark:bg-zinc-50 select-none"
+                ></span>
+
+                <p
+                    class="text-xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-wide font-mono"
+                >
+                    devureca
+                </p>
+            </div>
+
+            <div
+                class="text-[11px] font-mono text-zinc-500 dark:text-zinc-600 mt-0.5 mb-6 flex flex-col leading-relaxed"
+            >
+                <span>Gianfranco Ureta</span>
+                <span class="text-zinc-400 dark:text-zinc-500 font-light"
+                    >~/.developer</span
+                >
+            </div>
+        </div>
         <hr class="border-zinc-300 dark:border-zinc-800 mb-6" />
         <nav>
             <ul class="flex flex-col gap-1">
