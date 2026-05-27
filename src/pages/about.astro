@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Acerca de mí — devureca">
+    <Navbar />
+    <Footer />
+
+    <main
+        class="w-full max-w-md mx-auto border-x border-zinc-300/60 dark:border-zinc-900 pt-20 px-5 lg:px-6 min-h-screen flex flex-col opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards]"
+    >
+        <div class="grow flex flex-col justify-end pb-12">
+            <div class="flex flex-col gap-6 text-zinc-700 dark:text-zinc-300">
+                <h1
+                    class="text-sm font-bold text-zinc-900 dark:text-zinc-100 tracking-tight"
+                >
+                    Acerca de mí
+                </h1>
+
+                <div
+                    class="prose dark:prose-invert text-xs font-light tracking-wide leading-relaxed flex flex-col gap-4 antialiased"
+                >
+                    <p>
+                        Tecnología de alto nivel hecha simple, ligera y útil. 🚀
+                    </p>
+                    <p>
+                        ¡Hola! Soy <strong>Gianfranco Ureta</strong>,
+                        desarrollador Full Stack y fundador de <strong
+                            >devureca</strong
+                        >. Mi misión es clara: la web debe ser para todos. Aquí
+                        no solo escribimos código; construimos puentes digitales
+                        que eliminan las barreras de costo y conocimiento.
+                    </p>
+                    <p>
+                        Entusiasta del <strong>open source</strong>, apasionado
+                        lector de historietas, coleccionista de videojuegos y
+                        amante del <strong>chiptune</strong>. En mi tiempo
+                        libre, <strong>ensamblo Gunplas</strong>.
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col gap-3 mt-4 pt-6 border-t border-zinc-300/40 dark:border-zinc-900/60"
+                >
+                    <div
+                        class="w-full overflow-hidden rounded-lg border border-zinc-200/80 dark:border-zinc-900 bg-zinc-50/50 dark:bg-zinc-950/30 p-3 flex justify-end h-full items-center"
+                    >
+                        <div class="w-[180%] min-w-full flex justify-end">
+                            <img
+                                class="w-full block dark:hidden select-none object-right object-cover"
+                                src="https://ghchart.rshah.org/E8670D/devureca"
+                                alt="Cuadraditos de GitHub de devureca - Modo Claro"
+                                loading="lazy"
+                            />
+
+                            <img
+                                class="w-full hidden dark:block select-none invert opacity-45 hue-rotate-180 brightness-120 dark:brightness-90 contrast-125 object-right object-cover"
+                                src="https://ghchart.rshah.org/000000/devureca"
+                                alt="Cuadraditos de GitHub de devureca - Modo Oscuro"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="lg:hidden w-full text-center py-8 border-t border-zinc-300/20 dark:border-zinc-900/50 static bottom-0"
+        >
+            <p class="text-xs text-zinc-500 dark:text-zinc-600">
+                © 2026 devureca
+            </p>
+        </div>
+    </main>
+</Layout>

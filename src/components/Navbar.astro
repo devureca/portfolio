@@ -3,10 +3,10 @@ import ThemeToggle from "./ui/ThemeToggle.astro";
 
 const links = [
     { label: "Inicio", href: "/" },
-    { label: "Acerca", href: "#about" },
+    { label: "Acerca", href: "/about" },
     { label: "Portfolio", href: "#portfolio" },
     { label: "Logs", href: "#blog" },
-    { label: "Contacto", href: "#contact" },
+    { label: "Contacto", href: "/contact" },
 ];
 
 const socials = [
@@ -68,9 +68,17 @@ const socials = [
 >
     <div class="flex items-center justify-between px-5 py-4">
         <div>
-            <p class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                devureca
-            </p>
+            <a
+                href="/"
+                class="block hover:opacity-80 transition-opacity"
+                aria-label="Volver al inicio"
+            >
+                <p
+                    class="text-xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-wide"
+                >
+                    devureca
+                </p>
+            </a>
         </div>
         <div class="flex items-center gap-4">
             {
@@ -109,16 +117,18 @@ const socials = [
         <nav>
             <ul class="flex flex-col gap-2 pt-2">
                 {
-                    links.map((link) => (
-                        <li>
-                            <a
-                                href={link.href}
-                                class="text-sm text-zinc-600 dark:text-zinc-400 hover:text-[#FE5126] dark:hover:text-zinc-100 transition-colors duration-200 mobile-link"
-                            >
-                                {link.label}
-                            </a>
-                        </li>
-                    ))
+                    links
+                        .filter((link) => link.href !== "/") // Filtra y remueve el enlace a la raíz (Inicio)
+                        .map((link) => (
+                            <li>
+                                <a
+                                    href={link.href}
+                                    class="text-sm text-zinc-600 dark:text-zinc-400 hover:text-[#FE5126] dark:hover:text-zinc-100 transition-colors duration-200 mobile-link"
+                                >
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))
                 }
             </ul>
         </nav>
