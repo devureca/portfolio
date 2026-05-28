@@ -5,19 +5,18 @@ import Footer from "../components/Footer.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-const allProjects: CollectionEntry<"projects">[] = await getCollection(
-    "projects"
-);
+const allProjects: CollectionEntry<"projects">[] =
+    await getCollection("projects");
 
 const sortedProjects = allProjects.sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
 const openSourceProjects = sortedProjects.filter(
-    (project) => project.data.type === "open-source"
+    (project) => project.data.type === "open-source",
 );
 const clientProjects = sortedProjects.filter(
-    (project) => project.data.type === "client"
+    (project) => project.data.type === "client",
 );
 ---
 
@@ -32,20 +31,20 @@ const clientProjects = sortedProjects.filter(
             {
                 openSourceProjects.length > 0 && (
                     <div class="flex flex-col gap-3">
-                        <h2 class="text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
+                        <h2 class="text-[10px] uppercase tracking-widest text-zinc-600 dark:text-zinc-300 font-mono">
                             Open Source
                         </h2>
                         <ul class="flex flex-col gap-2 font-mono text-xs">
                             {openSourceProjects.map((project) => (
                                 <li class="flex gap-4 items-baseline group">
-                                    <span class="text-zinc-400 dark:text-zinc-600 select-none text-[11px]">
+                                    <span class="text-zinc-600 dark:text-zinc-300 select-none text-[11px]">
                                         {new Date(
-                                            project.data.date
+                                            project.data.date,
                                         ).getFullYear()}
                                     </span>
                                     <a
                                         href={`/projects/${project.id}`}
-                                        class="text-zinc-800 dark:text-zinc-300 hover:text-[#FE5126] dark:hover:text-zinc-100 transition-colors duration-150 underline decoration-zinc-300/50 dark:decoration-zinc-800/80 underline-offset-4 group-hover:decoration-[#FE5126]"
+                                        class="text-zinc-800 dark:text-zinc-100 transition-colors duration-150 underline decoration-zinc-300/50 dark:decoration-zinc-800/80 underline-offset-4 group-hover:decoration-[#FE5126]"
                                     >
                                         {project.data.title}
                                     </a>
@@ -59,20 +58,20 @@ const clientProjects = sortedProjects.filter(
             {
                 clientProjects.length > 0 && (
                     <div class="flex flex-col gap-3">
-                        <h2 class="text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
+                        <h2 class="text-[10px] uppercase tracking-widest text-zinc-600 dark:text-zinc-300 font-mono">
                             Proyectos y Clientes
                         </h2>
                         <ul class="flex flex-col gap-2 font-mono text-xs">
                             {clientProjects.map((project) => (
                                 <li class="flex gap-4 items-baseline group">
-                                    <span class="text-zinc-400 dark:text-zinc-600 select-none text-[11px]">
+                                    <span class="text-zinc-600 dark:text-zinc-300 select-none text-[11px]">
                                         {new Date(
-                                            project.data.date
+                                            project.data.date,
                                         ).getFullYear()}
                                     </span>
                                     <a
                                         href={`/projects/${project.id}`}
-                                        class="text-zinc-800 dark:text-zinc-300 hover:text-[#FE5126] dark:hover:text-zinc-100 transition-colors duration-150 underline decoration-zinc-300/50 dark:decoration-zinc-800/80 underline-offset-4 group-hover:decoration-[#FE5126]"
+                                        class="text-zinc-800 dark:text-zinc-100 transition-colors duration-150 underline decoration-zinc-300/50 dark:decoration-zinc-800/80 underline-offset-4 group-hover:decoration-[#FE5126]"
                                     >
                                         {project.data.title}
                                     </a>
@@ -87,7 +86,7 @@ const clientProjects = sortedProjects.filter(
         <div
             class="lg:hidden w-full text-center py-8 border-t border-zinc-300/20 dark:border-zinc-900/50 static bottom-0"
         >
-            <p class="text-xs text-zinc-500 dark:text-zinc-600">
+            <p class="text-xs text-zinc-600 dark:text-zinc-300">
                 © 2026 devureca
             </p>
         </div>

@@ -6,12 +6,11 @@ import ProjectEntry from "../components/ProjectEntry.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-const allProjects: CollectionEntry<"projects">[] = await getCollection(
-	"projects"
-);
+const allProjects: CollectionEntry<"projects">[] =
+	await getCollection("projects");
 
 const sortedProjects = allProjects.sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---
 
@@ -39,7 +38,7 @@ const sortedProjects = allProjects.sort(
 		<div
 			class="lg:hidden w-full text-center py-8 border-t border-zinc-300/20 dark:border-zinc-900/50"
 		>
-			<p class="text-xs text-zinc-500 dark:text-zinc-600">
+			<p class="text-xs text-zinc-600 dark:text-zinc-300">
 				© 2026 devureca
 			</p>
 		</div>

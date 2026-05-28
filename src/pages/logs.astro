@@ -8,7 +8,7 @@ import type { CollectionEntry } from "astro:content";
 const allLogs: CollectionEntry<"logs">[] = await getCollection("logs");
 
 const sortedLogs = allLogs.sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
 const formatDate = (date: Date) => {
@@ -31,21 +31,21 @@ const formatDate = (date: Date) => {
         <div class="grow flex flex-col gap-10 pb-12">
             <div class="flex flex-col gap-3">
                 <h2
-                    class="text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-mono"
+                    class="text-[10px] uppercase tracking-widest text-zinc-600 dark:text-zinc-300 font-mono"
                 >
                     Bitácora de publicaciones
                 </h2>
 
                 {
                     sortedLogs.length === 0 ? (
-                        <p class="text-xs font-mono text-zinc-500">
+                        <p class="text-xs font-mono text-zinc-600 dark:text-zinc-300">
                             No se encontraron publicaciones.
                         </p>
                     ) : (
                         <ul class="flex flex-col gap-2 font-mono text-xs">
                             {sortedLogs.map((log: CollectionEntry<"logs">) => (
                                 <li class="flex gap-4 items-baseline group">
-                                    <span class="text-zinc-400 dark:text-zinc-600 select-none text-[11px] whitespace-nowrap">
+                                    <span class="text-zinc-600 dark:text-zinc-300 select-none text-[11px] whitespace-nowrap">
                                         {formatDate(log.data.date)}
                                     </span>
                                     <a
@@ -65,7 +65,7 @@ const formatDate = (date: Date) => {
         <div
             class="lg:hidden w-full text-center py-8 border-t border-zinc-300/20 dark:border-zinc-900/50 static bottom-0"
         >
-            <p class="text-xs text-zinc-500 dark:text-zinc-600">
+            <p class="text-xs text-zinc-600 dark:text-zinc-300">
                 © 2026 devureca
             </p>
         </div>
